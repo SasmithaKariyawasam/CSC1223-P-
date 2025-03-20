@@ -1,0 +1,149 @@
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| agriharvesnexus    |
+| bfl                |
+| bookboat           |
+| bookdb             |
+| bookspage          |
+| bookstore          |
+| company            |
+| employee           |
+| emplyee management |
+| englishfi          |
+| icae02             |
+| information_schema |
+| it1223db           |
+| library            |
+| librarysystem      |
+| moviedb            |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| student            |
+| students           |
+| test               |
+| university         |
++--------------------+
+24 rows in set (0.001 sec)
+
+MariaDB [(none)]> create database UOV;
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| agriharvesnexus    |
+| bfl                |
+| bookboat           |
+| bookdb             |
+| bookspage          |
+| bookstore          |
+| company            |
+| employee           |
+| emplyee management |
+| englishfi          |
+| icae02             |
+| information_schema |
+| it1223db           |
+| library            |
+| librarysystem      |
+| moviedb            |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| student            |
+| students           |
+| test               |
+| university         |
+| uov                |
++--------------------+
+25 rows in set (0.001 sec)
+
+MariaDB [(none)]> use UOV;
+Database changed
+MariaDB [UOV]> create table students(std_id VARCHAR(15),name VARCHAR(30),course VARCHAR(30),DoB DATE,city VARCHAR(30));
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [UOV]> DESC students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| std_id | varchar(15) | YES  |     | NULL    |       |
+| name   | varchar(30) | YES  |     | NULL    |       |
+| course | varchar(30) | YES  |     | NULL    |       |
+| DoB    | date        | YES  |     | NULL    |       |
+| city   | varchar(30) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.017 sec)
+
+MariaDB [UOV]> INSERT INTO students VALUES('2022/ASP/17','Sasmitha','AMC','2003-11-18','Ambalangoda');
+Query OK, 1 row affected (0.035 sec)
+
+MariaDB [UOV]> select * from students;
++-------------+----------+--------+------------+-------------+
+| std_id      | name     | course | DoB        | city        |
++-------------+----------+--------+------------+-------------+
+| 2022/ASP/17 | Sasmitha | AMC    | 2003-11-18 | Ambalangoda |
++-------------+----------+--------+------------+-------------+
+1 row in set (0.000 sec)
+
+MariaDB [UOV]> INSERT INTO students VALUES('2022/ASP/03','Danthula','AMC','2002-15-18','Colombo');
+Query OK, 1 row affected, 1 warning (0.002 sec)
+
+MariaDB [UOV]> select * from students;
++-------------+----------+--------+------------+-------------+
+| std_id      | name     | course | DoB        | city        |
++-------------+----------+--------+------------+-------------+
+| 2022/ASP/17 | Sasmitha | AMC    | 2003-11-18 | Ambalangoda |
+| 2022/ASP/03 | Danthula | AMC    | 0000-00-00 | Colombo     |
++-------------+----------+--------+------------+-------------+
+2 rows in set (0.000 sec)
+
+MariaDB [UOV]> INSERT INTO students VALUES('2022/ASP/12','Vishwa','AMC','2001-05-06','Gampaha');
+Query OK, 1 row affected (0.021 sec)
+
+MariaDB [UOV]> INSERT INTO students VALUE('2022/ASP/38','Saumya','AMC','2001-01-09','Monaragala');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [UOV]> select * from students;
++-------------+----------+--------+------------+-------------+
+| std_id      | name     | course | DoB        | city        |
++-------------+----------+--------+------------+-------------+
+| 2022/ASP/17 | Sasmitha | AMC    | 2003-11-18 | Ambalangoda |
+| 2022/ASP/03 | Danthula | AMC    | 0000-00-00 | Colombo     |
+| 2022/ASP/12 | Vishwa   | AMC    | 2001-05-06 | Gampaha     |
+| 2022/ASP/21 | Dimali   | AMC    | 2002-11-25 | Balangoda   |
+| 2022/ASP/38 | Saumya   | AMC    | 2001-01-09 | Monaragala  |
++-------------+----------+--------+------------+-------------+
+5 rows in set (0.000 sec)
+
+MariaDB [UOV]> INSERT INTO students VALUES('2022/ASP/03','Danthula','AMC','2002-05-18','Colombo');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [UOV]> select * from students;
++-------------+----------+--------+------------+-------------+
+| std_id      | name     | course | DoB        | city        |
++-------------+----------+--------+------------+-------------+
+| 2022/ASP/17 | Sasmitha | AMC    | 2003-11-18 | Ambalangoda |
+| 2022/ASP/03 | Danthula | AMC    | 0000-00-00 | Colombo     |
+| 2022/ASP/12 | Vishwa   | AMC    | 2001-05-06 | Gampaha     |
+| 2022/ASP/21 | Dimali   | AMC    | 2002-11-25 | Balangoda   |
+| 2022/ASP/38 | Saumya   | AMC    | 2001-01-09 | Monaragala  |
+| 2022/ASP/03 | Danthula | AMC    | 2002-05-18 | Colombo     |
++-------------+----------+--------+------------+-------------+
+6 rows in set (0.000 sec)
+
+
+Conclusion 
+
+We studies how to create database ,how to use the database ,how to create a table, how to add data to the database and how to view added data in the database.
