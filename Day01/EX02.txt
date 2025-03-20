@@ -1,0 +1,101 @@
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [UOV]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| agriharvesnexus    |
+| bfl                |
+| bookboat           |
+| bookdb             |
+| bookspage          |
+| bookstore          |
+| company            |
+| employee           |
+| emplyee management |
+| englishfi          |
+| icae02             |
+| information_schema |
+| it1223db           |
+| library            |
+| librarysystem      |
+| moviedb            |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| physician          |
+| retailstore        |
+| student            |
+| students           |
+| test               |
+| university         |
+| uov                |
++--------------------+
+26 rows in set (0.001 sec)
+
+MariaDB [UOV]> use physician;
+Database changed
+MariaDB [physician]> use uov;
+Database changed
+MariaDB [uov]> create table physician(Physician_id CHAR(10),Name VARCHAR(30),Position VARCHAR(50));
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [uov]> INSERT INTO physician VALUE('1','John Dorian','Staff Internist');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [uov]> INSERT INTO physician VALUE('2','Elliot Reid','Attending Physician');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [uov]> INSERT INTO physician VALUE('3','Christopher Turk','Surgical Attending Physician');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [uov]> INSERT INTO physician VALUE('4','Percival Cox','Senior Attending Physician');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [uov]> INSERT INTO physician VALUE('5','Keith Dudemeister','MD resident');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [uov]> INSERT INTO physician VALUE('6','Molly Clock','Attending Physician');
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [uov]> select * from physician;
++--------------+-------------------+------------------------------+
+| Physician_id | Name              | Position                     |
++--------------+-------------------+------------------------------+
+| 1            | John Dorian       | Staff Internist              |
+| 2            | Elliot Reid       | Attending Physician          |
+| 3            | Christopher Turk  | Surgical Attending Physician |
+| 4            | Percival Cox      | Senior Attending Physician   |
+| 5            | Keith Dudemeister | MD resident                  |
+| 6            | Molly Clock       | Attending Physician          |
++--------------+-------------------+------------------------------+
+6 rows in set (0.000 sec)
+
+MariaDB [uov]> DESC physician;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Physician_id | char(10)    | YES  |     | NULL    |       |
+| Name         | varchar(30) | YES  |     | NULL    |       |
+| Position     | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.014 sec)
+
+MariaDB [uov]> select * from physician;
++--------------+-------------------+------------------------------+
+| Physician_id | Name              | Position                     |
++--------------+-------------------+------------------------------+
+| 1            | John Dorian       | Staff Internist              |
+| 2            | Elliot Reid       | Attending Physician          |
+| 3            | Christopher Turk  | Surgical Attending Physician |
+| 4            | Percival Cox      | Senior Attending Physician   |
+| 5            | Keith Dudemeister | MD resident                  |
+| 6            | Molly Clock       | Attending Physician          |
++--------------+-------------------+------------------------------+
+6 rows in set (0.000 sec)
+
+
+Conclusion
+
+We learn how to create a database ,Add data to the database on our own.
