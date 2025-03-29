@@ -1,0 +1,501 @@
+
+Setting environment for using XAMPP for Windows.
+2022asp17@CL2-18 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| 2020asp44          |
+| agriharvestnexus   |
+| bank               |
+| bfl                |
+| bookdb             |
+| bookstore          |
+| company            |
+| englishfi          |
+| exam               |
+| hospital           |
+| icea02             |
+| icea2              |
+| information_schema |
+| inventory          |
+| it1223db           |
+| library            |
+| librarysystem      |
+| manage             |
+| management         |
+| moviedb            |
+| mysql              |
+| onlinestore        |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| school             |
+| school1            |
+| sjbase             |
+| spj                |
+| spjbase            |
+| studentdb          |
+| studentsdb         |
+| test               |
+| university         |
++--------------------+
+34 rows in set (0.063 sec)
+
+MariaDB [(none)]> create UoV;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'UoV' at line 1
+MariaDB [(none)]> create database UoV;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| 2020asp44          |
+| agriharvestnexus   |
+| bank               |
+| bfl                |
+| bookdb             |
+| bookstore          |
+| company            |
+| englishfi          |
+| exam               |
+| hospital           |
+| icea02             |
+| icea2              |
+| information_schema |
+| inventory          |
+| it1223db           |
+| library            |
+| librarysystem      |
+| manage             |
+| management         |
+| moviedb            |
+| mysql              |
+| onlinestore        |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| school             |
+| school1            |
+| sjbase             |
+| spj                |
+| spjbase            |
+| studentdb          |
+| studentsdb         |
+| test               |
+| university         |
+| uov                |
++--------------------+
+35 rows in set (0.001 sec)
+
+MariaDB [(none)]> use UoV;
+Database changed
+MariaDB [UoV]> create table patient(Patientid VARCHAR(9),Name VARCHAR(35), Address VARCHAR(50),Phone VARCHAR(10));
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [UoV]> DESC patient;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Patientid | varchar(9)  | YES  |     | NULL    |       |
+| Name      | varchar(35) | YES  |     | NULL    |       |
+| Address   | varchar(50) | YES  |     | NULL    |       |
+| Phone     | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.014 sec)
+
+MariaDB [UoV]> create table patients(Patientid BIGINT,Name VARCHAR(35), Address VARCHAR(50),Phone VARCHAR(10));
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [UoV]> DESC patients;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Patientid | bigint(20)  | YES  |     | NULL    |       |
+| Name      | varchar(35) | YES  |     | NULL    |       |
+| Address   | varchar(50) | YES  |     | NULL    |       |
+| Phone     | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.014 sec)
+
+MariaDB [UoV]> create table patients(Patientid BIGINT Primary key,Name VARCHAR(35), Address VARCHAR(50),Phone VARCHAR(10));
+ERROR 1050 (42S01): Table 'patients' already exists
+MariaDB [UoV]> create table patientdetails(Patientid BIGINT Primary key,Name VARCHAR(35), Address VARCHAR(50),Phone VARCHAR(10));
+Query OK, 0 rows affected (0.010 sec)
+
+MariaDB [UoV]> desc patientdetails
+    -> ;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Patientid | bigint(20)  | NO   | PRI | NULL    |       |
+| Name      | varchar(35) | YES  |     | NULL    |       |
+| Address   | varchar(50) | YES  |     | NULL    |       |
+| Phone     | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.014 sec)
+
+MariaDB [UoV]> insert into patientdetails (Patientid,Name,Address,Phone) values(
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [UoV]> insert into patientdetails (Patientid,Name,Address,Phone) values
+    -> ('100000001','John Smith','42 Footer Lane','555-3215'),
+    -> ('100000002','Grace Dian','65 Snafu Lane','555-0165'),
+    -> ('100000003','Todd Qualin','101 Omega Street','555-6589'),
+    -> ('100000004','Denis Doe','1100 Foobaz Avenue','555-1209');
+Query OK, 4 rows affected (0.036 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [UoV]> select * from patientdetails;
++-----------+-------------+--------------------+----------+
+| Patientid | Name        | Address            | Phone    |
++-----------+-------------+--------------------+----------+
+| 100000001 | John Smith  | 42 Footer Lane     | 555-3215 |
+| 100000002 | Grace Dian  | 65 Snafu Lane      | 555-0165 |
+| 100000003 | Todd Qualin | 101 Omega Street   | 555-6589 |
+| 100000004 | Denis Doe   | 1100 Foobaz Avenue | 555-1209 |
++-----------+-------------+--------------------+----------+
+4 rows in set (0.000 sec)
+
+MariaDB [UoV]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| 2020asp44          |
+| agriharvestnexus   |
+| bank               |
+| bfl                |
+| bookdb             |
+| bookstore          |
+| company            |
+| englishfi          |
+| exam               |
+| hospital           |
+| icea02             |
+| icea2              |
+| information_schema |
+| inventory          |
+| it1223db           |
+| library            |
+| librarysystem      |
+| manage             |
+| management         |
+| moviedb            |
+| mysql              |
+| onlinestore        |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| school             |
+| school1            |
+| sjbase             |
+| spj                |
+| spjbase            |
+| studentdb          |
+| studentsdb         |
+| test               |
+| university         |
+| uov                |
++--------------------+
+35 rows in set (0.001 sec)
+
+MariaDB [UoV]> create database 2022-ASP-17;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '2022-ASP-17' at line 1
+MariaDB [UoV]> create database 2022ASP17;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [UoV]> use 2022ASP17;
+Database changed
+MariaDB [2022ASP17]> create table patientdetails(Patientid BIGINT Primary key,Name VARCHAR(35), Address VARCHAR(50),Phone VARCHAR(10));
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [2022ASP17]> insert into patientdetails (Patientid,Name,Address,Phone) values
+    -> ('100000001','John Smith','42 Footer Lane','555-3215'),
+    -> ('100000002','Grace Dian','65 Snafu Lane','555-0165'),
+    -> ('100000003','Todd Qualin','101 Omega Street','555-6589'),
+    -> ('100000004','Denis Doe','1100 Foobaz Avenue','555-1209');
+Query OK, 4 rows affected (0.005 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [2022ASP17]> select * from patientdetails;
++-----------+-------------+--------------------+----------+
+| Patientid | Name        | Address            | Phone    |
++-----------+-------------+--------------------+----------+
+| 100000001 | John Smith  | 42 Footer Lane     | 555-3215 |
+| 100000002 | Grace Dian  | 65 Snafu Lane      | 555-0165 |
+| 100000003 | Todd Qualin | 101 Omega Street   | 555-6589 |
+| 100000004 | Denis Doe   | 1100 Foobaz Avenue | 555-1209 |
++-----------+-------------+--------------------+----------+
+4 rows in set (0.000 sec)
+
+MariaDB [2022ASP17]> create table patient(Patientid BIGINT Primary key,Name VARCHAR(35), Address VARCHAR(50),Phone VARCHAR(10));
+Query OK, 0 rows affected (0.010 sec)
+
+MariaDB [2022ASP17]> insert into patient(Patientid,Name,Address,Phone) values
+    -> ('100000001','John Smith','42 Footer Lane','555-3215'),
+    -> ('100000002','Grace Dian','65 Snafu Lane','555-0165'),
+    -> ('100000003','Todd Qualin','101 Omega Street','555-6589'),;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4
+MariaDB [2022ASP17]> delete from patients;
+ERROR 1146 (42S02): Table '2022asp17.patients' doesn't exist
+MariaDB [2022ASP17]> delete from patient;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [2022ASP17]> delete from patientdetails;
+Query OK, 4 rows affected (0.004 sec)
+
+MariaDB [2022ASP17]> insert into patient(Patientid,Name,Address,Phone) values
+    -> (100000001,'John Smith','42 Footer Lane','555-3215'),
+    -> (100000002,'Grace Dian','65 Snafu Lane','555-0165'),
+    -> (100000003,'Todd Qualin','101 Omega Street','555-6589'),
+    -> (100000004,'Denis Doe','1100 Foobaz Avenue','555-1209');
+Query OK, 4 rows affected (0.004 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [2022ASP17]> select * from patient;
++-----------+-------------+--------------------+----------+
+| Patientid | Name        | Address            | Phone    |
++-----------+-------------+--------------------+----------+
+| 100000001 | John Smith  | 42 Footer Lane     | 555-3215 |
+| 100000002 | Grace Dian  | 65 Snafu Lane      | 555-0165 |
+| 100000003 | Todd Qualin | 101 Omega Street   | 555-6589 |
+| 100000004 | Denis Doe   | 1100 Foobaz Avenue | 555-1209 |
++-----------+-------------+--------------------+----------+
+4 rows in set (0.000 sec)
+
+MariaDB [2022ASP17]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 2020asp44          |
+| 2022asp17          |
+| agriharvestnexus   |
+| bank               |
+| bfl                |
+| bookdb             |
+| bookstore          |
+| company            |
+| englishfi          |
+| exam               |
+| hospital           |
+| icea02             |
+| icea2              |
+| information_schema |
+| inventory          |
+| it1223db           |
+| library            |
+| librarysystem      |
+| manage             |
+| management         |
+| moviedb            |
+| mysql              |
+| onlinestore        |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| school             |
+| school1            |
+| sjbase             |
+| spj                |
+| spjbase            |
+| studentdb          |
+| studentsdb         |
+| test               |
+| university         |
++--------------------+
+35 rows in set (0.001 sec)
+
+MariaDB [2022ASP17]> drop database test;
+Query OK, 0 rows affected (0.014 sec)
+
+MariaDB [2022asp17]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 2020asp44          |
+| 2022asp17          |
+| agriharvestnexus   |
+| bank               |
+| bfl                |
+| bookdb             |
+| bookstore          |
+| company            |
+| englishfi          |
+| exam               |
+| hospital           |
+| icea02             |
+| icea2              |
+| information_schema |
+| inventory          |
+| it1223db           |
+| library            |
+| librarysystem      |
+| manage             |
+| management         |
+| moviedb            |
+| mysql              |
+| onlinestore        |
+| performance_schema |
+| phpmyadmin         |
+| retailstore        |
+| school             |
+| school1            |
+| sjbase             |
+| spj                |
+| spjbase            |
+| studentdb          |
+| studentsdb         |
+| university         |
++--------------------+
+34 rows in set (0.001 sec)
+
+MariaDB [2022asp17]> use 2020asp44;
+Database changed
+MariaDB [2020asp44]> select * from students;
++----+---------+-----+--------+
+| id | name    | age | course |
++----+---------+-----+--------+
+| 1  | isuru   |  25 | CSC    |
+| 2  | sachin  |  24 | sta    |
+| 3  | naththa |  23 | pma    |
++----+---------+-----+--------+
+3 rows in set (0.014 sec)
+
+MariaDB [2020asp44]> desc students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | varchar(10) | NO   | PRI | NULL    |       |
+| name   | varchar(50) | NO   |     | NULL    |       |
+| age    | int(11)     | NO   |     | NULL    |       |
+| course | varchar(50) | NO   |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.014 sec)
+
+MariaDB [2020asp44]> use 2022asp17;
+Database changed
+MariaDB [2022asp17]> create database gradedetails(id int primary key,name varchar(50),age int,grade char(1),city varchar(40));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(id int primary key,name varchar(50),age int,grade char(1),city varchar(40))' at line 1
+MariaDB [2022asp17]> create table gradedetails(id int primary key,name varchar(50),age int,grade char(1),city varchar(40));
+Query OK, 0 rows affected (0.010 sec)
+
+MariaDB [2022asp17]> insert into gradedetails(is,name,age,grade,city) values
+    -> (1,'Sasmitha',21,'A','Ambalangoda'),
+    -> (2,'Chalaka',22,'C','Kelaniya'),
+    -> (3,'Vishva',24,'B','Gampaha'),
+    -> (4,'Saumya',24,'A','Ampara'),
+    -> (5,'Damith',23,'B','APure'),
+    -> (6,'Jata',20,'A','Badulla');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'is,name,age,grade,city) values
+(1,'Sasmitha',21,'A','Ambalangoda'),
+(2,'Chala...' at line 1
+MariaDB [2022asp17]> insert into gradedetails(id,name,age,grade,city) values
+    -> (1,'Sasmitha',21,'A','Ambalangoda'),
+    -> (2,'Chalaka',22,'C','Kelaniya'),
+    -> (3,'Vishva',24,'B','Gampaha'),
+    -> (4,'Saumya',24,'A','Ampara'),
+    -> (5,'Damith',23,'B','APure'),
+    -> (6,'Jata',20,'A','Badulla');
+Query OK, 6 rows affected (0.005 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+MariaDB [2022asp17]> select * from gradedetails;
++----+----------+------+-------+-------------+
+| id | name     | age  | grade | city        |
++----+----------+------+-------+-------------+
+|  1 | Sasmitha |   21 | A     | Ambalangoda |
+|  2 | Chalaka  |   22 | C     | Kelaniya    |
+|  3 | Vishva   |   24 | B     | Gampaha     |
+|  4 | Saumya   |   24 | A     | Ampara      |
+|  5 | Damith   |   23 | B     | APure       |
+|  6 | Jata     |   20 | A     | Badulla     |
++----+----------+------+-------+-------------+
+6 rows in set (0.000 sec)
+
+MariaDB [2022asp17]> load data local infile 'C:/Users/2022asp17/Desktop/2022ASP17/Database/Day02/Data.csv'
+    -> into table gradedetails
+    -> fields terminated by ','
+    -> lines terminated by ''
+    -> (id, name, age, grade, city);
+Query OK, 1 row affected, 5 warnings (0.005 sec)
+Records: 2  Deleted: 0  Skipped: 1  Warnings: 5
+
+MariaDB [2022asp17]> select * from gradedetails;
++----+----------+------+-------+-------------+
+| id | name     | age  | grade | city        |
++----+----------+------+-------+-------------+
+|  0 | 22       |    0 | A     | NULL        |
+|  1 | Sasmitha |   21 | A     | Ambalangoda |
+|  2 | Chalaka  |   22 | C     | Kelaniya    |
+|  3 | Vishva   |   24 | B     | Gampaha     |
+|  4 | Saumya   |   24 | A     | Ampara      |
+|  5 | Damith   |   23 | B     | APure       |
+|  6 | Jata     |   20 | A     | Badulla     |
++----+----------+------+-------+-------------+
+7 rows in set (0.000 sec)
+
+MariaDB [2022asp17]> load data local infile 'C:/Users/2022asp17/Desktop/2022ASP17/Database/Day02/Data.csv'
+    -> into table gradedetails
+    -> fields terminated by '\t'
+    -> lines terminated by '\n'
+    -> (id, name, age, grade, city);
+Query OK, 0 rows affected, 2 warnings (0.001 sec)
+Records: 2  Deleted: 0  Skipped: 2  Warnings: 2
+
+MariaDB [2022asp17]> select * from gradedetails;
++----+----------+------+-------+-------------+
+| id | name     | age  | grade | city        |
++----+----------+------+-------+-------------+
+|  0 | 22       |    0 | A     | NULL        |
+|  1 | Sasmitha |   21 | A     | Ambalangoda |
+|  2 | Chalaka  |   22 | C     | Kelaniya    |
+|  3 | Vishva   |   24 | B     | Gampaha     |
+|  4 | Saumya   |   24 | A     | Ampara      |
+|  5 | Damith   |   23 | B     | APure       |
+|  6 | Jata     |   20 | A     | Badulla     |
++----+----------+------+-------+-------------+
+7 rows in set (0.000 sec)
+
+MariaDB [2022asp17]> LOAD DATA LOCAL INFILE 'C:/Users/2022asp17/Desktop/2022ASP17/Database/Day02/Data.csv'
+    -> INTO TABLE gradedetails
+    -> FIELDS TERMINATED BY '\t'
+    -> LINES TERMINATED BY '\n'
+    -> (id,name,age,grade,city);
+Query OK, 0 rows affected, 2 warnings (0.001 sec)
+Records: 2  Deleted: 0  Skipped: 2  Warnings: 2
+
+MariaDB [2022asp17]> select * from gradedetails;
++----+----------+------+-------+-------------+
+| id | name     | age  | grade | city        |
++----+----------+------+-------+-------------+
+|  0 | 22       |    0 | A     | NULL        |
+|  1 | Sasmitha |   21 | A     | Ambalangoda |
+|  2 | Chalaka  |   22 | C     | Kelaniya    |
+|  3 | Vishva   |   24 | B     | Gampaha     |
+|  4 | Saumya   |   24 | A     | Ampara      |
+|  5 | Damith   |   23 | B     | APure       |
+|  6 | Jata     |   20 | A     | Badulla     |
++----+----------+------+-------+-------------+
+7 rows in set (0.000 sec)
+
+MariaDB [2022asp17]> LOAD DATA LOCAL INFILE 'C:/Users/2022asp17/Desktop/2022ASP17/Database/Day02/Data.csv'
+    -> INTO TABLE gradedetails
+    -> FIELDS TERMINATED BY '\t'
+    -> LINES TERMINATED BY '\n'
+    -> (id,name,age,grade,city);
+Query OK, 0 rows affected, 4 warnings (0.001 sec)
+Records: 2  Deleted: 0  Skipped: 2  Warnings: 4
+
+
+Conclusion:- Learned How to create a table with a Primary key
