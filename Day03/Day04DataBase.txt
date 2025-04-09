@@ -1,0 +1,474 @@
+
+Setting environment for using XAMPP for Windows.
+2022asp17@CL2-46 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| agriharvestnexus   |
+| babybubbles        |
+| bfl                |
+| bookboat           |
+| bookdb             |
+| bookshop           |
+| company            |
+| englishfi          |
+| hospital           |
+| icae02             |
+| ict4191icae04      |
+| information_schema |
+| inventory          |
+| it1223db           |
+| library            |
+| moviedb            |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| studentdb          |
+| students           |
+| test               |
+| university         |
+| uov                |
++--------------------+
+24 rows in set (0.049 sec)
+
+MariaDB [(none)]> use uov
+Database changed
+MariaDB [uov]> show tables
+    -> ;
++---------------+
+| Tables_in_uov |
++---------------+
+| patient       |
+| student       |
++---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [uov]> select * in students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'in students' at line 1
+MariaDB [uov]> select * in student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'in student' at line 1
+MariaDB [uov]> select * from student;
+Empty set (0.031 sec)
+
+MariaDB [uov]> select * from patient;
++-----------+---------------+--------------------+----------+
+| patientId | Name          | Address            | Phone    |
++-----------+---------------+--------------------+----------+
+| 100000001 | John Smith    | 42 Foobar Lane     | 555-0256 |
+| 100000002 | Grace Ritchie | 37  Snafu Drive    | 555-0512 |
+| 100000003 | Todd Quinlan  | 101 Ombbq Street   | 555-1204 |
+| 100000004 | Dennis Doe    | 1100 Foobaz Avenue | 555-2048 |
++-----------+---------------+--------------------+----------+
+4 rows in set (0.004 sec)
+
+MariaDB [uov]> use students;
+Database changed
+MariaDB [students]> show tables;
++--------------------+
+| Tables_in_students |
++--------------------+
+| students           |
++--------------------+
+1 row in set (0.001 sec)
+
+MariaDB [students]> select * from students;
++------------+--------+-----+--------+
+| id         | name   | age | course |
++------------+--------+-----+--------+
+| 2020/asp/1 | pahan  |  25 | csc    |
+| 2020/asp/2 | sajan  |  26 | csc    |
+| 2020/asp/3 | navoda |  27 | csc    |
++------------+--------+-----+--------+
+3 rows in set (0.005 sec)
+
+MariaDB [students]> use uov;
+Database changed
+MariaDB [uov]> create table gradedetails(id int primary key,name varchar(50),age int,grade char(1),city varchar(40));
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [uov]> insert into gradedetails(is,name,age,grade,city) values
+    ->     -> (1,'Sasmitha',21,'A','Ambalangoda'),
+    ->     -> (2,'Chalaka',22,'C','Kelaniya'),
+    ->     -> (3,'Vishva',24,'B','Gampaha'),
+    ->     -> (4,'Saumya',24,'A','Ampara'),
+    ->     -> (5,'Damith',23,'B','APure'),
+    ->     -> (6,'Jata',20,'A','Badulla');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'is,name,age,grade,city) values
+    -> (1,'Sasmitha',21,'A','Ambalangoda'),
+  ...' at line 1
+MariaDB [uov]> insert into gradedetails(is,name,age,grade,city) values\
+    -> (1,'Sasmitha',21,'A','Ambalangoda'),
+    -> (2,'Chalaka',22,'C','Kelaniya'),
+    -> (3,'Vishva',24,'B','Gampaha'),
+    -> (4,'Saumya',24,'A','Ampara'),
+    -> (5,'Damith',23,'B','APure'),
+    -> (6,'Jata',20,'A','Badulla');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'is,name,age,grade,city) values
+(1,'Sasmitha',21,'A','Ambalangoda'),
+(2,'Chala...' at line 1
+MariaDB [uov]> insert into gradedetails(is,name,age,grade,city) values
+    -> (1,'Sasmitha',21,'A','Ambalangoda'),
+    -> (2,'Chalaka',22,'C','Kelaniya'),
+    -> (3,'Vishva',24,'B','Gampaha'),
+    -> (4,'Saumya',24,'A','Ampara'),
+    -> (5,'Damith',23,'B','APure'),
+    -> (6,'Jata',20,'A','Badulla');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'is,name,age,grade,city) values
+(1,'Sasmitha',21,'A','Ambalangoda'),
+(2,'Chala...' at line 1
+MariaDB [uov]> insert into gradedetails(id,name,age,grade,city) values
+    -> (1,'Sasmitha',21,'A','Ambalangoda'),
+    -> (2,'Chalaka',22,'C','Kelaniya'),
+    -> (3,'Vishva',24,'B','Gampaha'),
+    -> (4,'Saumya',24,'A','Ampara'),
+    -> (5,'Damith',23,'B','APure'),
+    -> (6,'Jata',20,'A','Badulla');
+Query OK, 6 rows affected (0.004 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+MariaDB [uov]> use test;
+Database changed
+MariaDB [test]> show tables;
+Empty set (0.000 sec)
+
+MariaDB [test]> create table Sas(id int primary key,Name varchar(50),age int,Grade char(1),City varchar(50));
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [test]> desc Sas;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(11)     | NO   | PRI | NULL    |       |
+| Name  | varchar(50) | YES  |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
+| Grade | char(1)     | YES  |     | NULL    |       |
+| City  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.015 sec)
+
+MariaDB [test]> insert into Sas values
+    -> (1,"Sas",20,'A',"Ambalan");
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [test]> select * from Sas;
++----+------+------+-------+---------+
+| id | Name | age  | Grade | City    |
++----+------+------+-------+---------+
+|  1 | Sas  |   20 | A     | Ambalan |
++----+------+------+-------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> insert into Sas values
+    -> (2,"Sasa",22,'B',"Asdadalan");
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [test]> create table New(id int primary key,Name varchar(50) not null,age int,Grade char(1),City varchar(50));
+Query OK, 0 rows affected (0.010 sec)
+
+MariaDB [test]> desc new;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(11)     | NO   | PRI | NULL    |       |
+| Name  | varchar(50) | NO   |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
+| Grade | char(1)     | YES  |     | NULL    |       |
+| City  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.014 sec)
+
+MariaDB [test]> insert into new values
+    -> (1,'Sasmitha',21,'A','Ambalangoda'),
+    -> (2,'Chalaka',22,'C','Kelaniya'),
+    -> (3,'Vishva',24,'B','Gampaha'),
+    -> (4,'Saumya',24,'A','Ampara'),
+    -> (5,'Damith',23,'B','APure'),
+    -> (6,'Jata',20,'A','Badulla');
+Query OK, 6 rows affected (0.002 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> select id,age from new;
++----+------+
+| id | age  |
++----+------+
+|  1 |   21 |
+|  2 |   22 |
+|  3 |   24 |
+|  4 |   24 |
+|  5 |   23 |
+|  6 |   20 |
++----+------+
+6 rows in set (0.000 sec)
+
+MariaDB [test]> select * from new WHERE grade='B';
++----+--------+------+-------+---------+
+| id | Name   | age  | Grade | City    |
++----+--------+------+-------+---------+
+|  3 | Vishva |   24 | B     | Gampaha |
+|  5 | Damith |   23 | B     | APure   |
++----+--------+------+-------+---------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]> select * from new where City="Gampaha";
++----+--------+------+-------+---------+
+| id | Name   | age  | Grade | City    |
++----+--------+------+-------+---------+
+|  3 | Vishva |   24 | B     | Gampaha |
++----+--------+------+-------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select * from new where City="gampaha";
++----+--------+------+-------+---------+
+| id | Name   | age  | Grade | City    |
++----+--------+------+-------+---------+
+|  3 | Vishva |   24 | B     | Gampaha |
++----+--------+------+-------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select * from new where Name="vishva";
++----+--------+------+-------+---------+
+| id | Name   | age  | Grade | City    |
++----+--------+------+-------+---------+
+|  3 | Vishva |   24 | B     | Gampaha |
++----+--------+------+-------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> insert into new value
+    -> (7,"Samudhi",,,);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',)' at line 2
+MariaDB [test]> insert into new value
+    -> (7,"Samudhi",,'',"");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''',"")' at line 2
+MariaDB [test]> insert into new value
+    -> (7,"Samudhi", ,' '," ");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' '," ")' at line 2
+MariaDB [test]> insert into new values
+    -> (7,"Samudhi", ,' '," ");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' '," ")' at line 2
+MariaDB [test]> insert into new values
+    -> (7,"Samudhi",,'',"");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''',"")' at line 2
+MariaDB [test]> insert into new values
+    -> (7,"Samudhi",,,);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',)' at line 2
+MariaDB [test]> (7,"Samudhi",,,);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '7,"Samudhi",,,)' at line 1
+MariaDB [test]> select * from new where age between 20 and 25;
++----+----------+------+-------+-------------+
+| id | Name     | age  | Grade | City        |
++----+----------+------+-------+-------------+
+|  1 | Sasmitha |   21 | A     | Ambalangoda |
+|  2 | Chalaka  |   22 | C     | Kelaniya    |
+|  3 | Vishva   |   24 | B     | Gampaha     |
+|  4 | Saumya   |   24 | A     | Ampara      |
+|  5 | Damith   |   23 | B     | APure       |
+|  6 | Jata     |   20 | A     | Badulla     |
++----+----------+------+-------+-------------+
+6 rows in set (0.000 sec)
+
+MariaDB [test]> select * from new where age between 20 and 21;
++----+----------+------+-------+-------------+
+| id | Name     | age  | Grade | City        |
++----+----------+------+-------+-------------+
+|  1 | Sasmitha |   21 | A     | Ambalangoda |
+|  6 | Jata     |   20 | A     | Badulla     |
++----+----------+------+-------+-------------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]> select distinct city from student;
+ERROR 1146 (42S02): Table 'test.student' doesn't exist
+MariaDB [test]> select distinct city from new;
++-------------+
+| city        |
++-------------+
+| Ambalangoda |
+| Kelaniya    |
+| Gampaha     |
+| Ampara      |
+| APure       |
+| Badulla     |
++-------------+
+6 rows in set (0.000 sec)
+
+MariaDB [test]> select * from new where city like '%e%';
++----+---------+------+-------+----------+
+| id | Name    | age  | Grade | City     |
++----+---------+------+-------+----------+
+|  2 | Chalaka |   22 | C     | Kelaniya |
+|  5 | Damith  |   23 | B     | APure    |
++----+---------+------+-------+----------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]> select * from new where city in('Apure','badulla');
++----+--------+------+-------+---------+
+| id | Name   | age  | Grade | City    |
++----+--------+------+-------+---------+
+|  5 | Damith |   23 | B     | APure   |
+|  6 | Jata   |   20 | A     | Badulla |
++----+--------+------+-------+---------+
+2 rows in set (0.001 sec)
+
+MariaDB [test]> select * from new where city='apure' and city='kelaniya';
+Empty set (0.000 sec)
+
+MariaDB [test]> select * from new where city='apure' and grade='a';
+Empty set (0.000 sec)
+
+MariaDB [test]> select * from new where city='apure' and grade='c';
+Empty set (0.000 sec)
+
+MariaDB [test]> select * from new where city='apure' and grade='C';
+Empty set (0.000 sec)
+
+MariaDB [test]> select * from new where city='apure' and grade='b';
++----+--------+------+-------+-------+
+| id | Name   | age  | Grade | City  |
++----+--------+------+-------+-------+
+|  5 | Damith |   23 | B     | APure |
++----+--------+------+-------+-------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select * from new where city='apure' or grade='b';
++----+--------+------+-------+---------+
+| id | Name   | age  | Grade | City    |
++----+--------+------+-------+---------+
+|  3 | Vishva |   24 | B     | Gampaha |
+|  5 | Damith |   23 | B     | APure   |
++----+--------+------+-------+---------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]> select * from new where grade!='a';
++----+---------+------+-------+----------+
+| id | Name    | age  | Grade | City     |
++----+---------+------+-------+----------+
+|  2 | Chalaka |   22 | C     | Kelaniya |
+|  3 | Vishva  |   24 | B     | Gampaha  |
+|  5 | Damith  |   23 | B     | APure    |
++----+---------+------+-------+----------+
+3 rows in set (0.000 sec)
+
+MariaDB [test]> select * from new limit 3;
++----+----------+------+-------+-------------+
+| id | Name     | age  | Grade | City        |
++----+----------+------+-------+-------------+
+|  1 | Sasmitha |   21 | A     | Ambalangoda |
+|  2 | Chalaka  |   22 | C     | Kelaniya    |
+|  3 | Vishva   |   24 | B     | Gampaha     |
++----+----------+------+-------+-------------+
+3 rows in set (0.000 sec)
+
+MariaDB [test]> select * from new limit 4;
++----+----------+------+-------+-------------+
+| id | Name     | age  | Grade | City        |
++----+----------+------+-------+-------------+
+|  1 | Sasmitha |   21 | A     | Ambalangoda |
+|  2 | Chalaka  |   22 | C     | Kelaniya    |
+|  3 | Vishva   |   24 | B     | Gampaha     |
+|  4 | Saumya   |   24 | A     | Ampara      |
++----+----------+------+-------+-------------+
+4 rows in set (0.000 sec)
+
+MariaDB [test]> select count(id) from new;
++-----------+
+| count(id) |
++-----------+
+|         6 |
++-----------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select count(name) from new;
++-------------+
+| count(name) |
++-------------+
+|           6 |
++-------------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select count(*) from new;
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select max(age) from new;
++----------+
+| max(age) |
++----------+
+|       24 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select max(*) from new;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '*) from new' at line 1
+MariaDB [test]> select min(age) from new;
++----------+
+| min(age) |
++----------+
+|       20 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select min(id) from new;
++---------+
+| min(id) |
++---------+
+|       1 |
++---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select avg(age) from new;
++----------+
+| avg(age) |
++----------+
+|  22.3333 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select sum(age) from new;
++----------+
+| sum(age) |
++----------+
+|      134 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select upper(name) from new;
++-------------+
+| upper(name) |
++-------------+
+| SASMITHA    |
+| CHALAKA     |
+| VISHVA      |
+| SAUMYA      |
+| DAMITH      |
+| JATA        |
++-------------+
+6 rows in set (0.000 sec)
+
+MariaDB [test]> select lower(name) from new;
++-------------+
+| lower(name) |
++-------------+
+| sasmitha    |
+| chalaka     |
+| vishva      |
+| saumya      |
+| damith      |
+| jata        |
++-------------+
+6 rows in set (0.000 sec)
+
+MariaDB [test]>
